@@ -1,0 +1,8 @@
+import { useEffect, useRef } from 'react';
+import { X, Leaf } from 'lucide-react';
+export function openDemoContact() { window.dispatchEvent(new Event('aurevyra:contact')); }
+export default function ContactDialog() {
+  const dialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => { const open = () => { if (!dialog.current?.open) dialog.current?.showModal(); }; window.addEventListener('aurevyra:contact', open); return () => window.removeEventListener('aurevyra:contact', open); }, []);
+  return <dialog ref={dialog} className="privacy-dialog contact-dialog" aria-labelledby="contact-title" aria-describedby="contact-description" onClick={event => { if (event.target === event.currentTarget) { const rect = event.currentTarget.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.current?.close(); } }}><button type="button" autoFocus className="dialog-close" onClick={() => dialog.current?.close()} aria-label="Fechar contato"><X size={24} /></button><Leaf size={30} strokeWidth={1.2} aria-hidden="true" /><p className="eyebrow">UM PRIMEIRO OLÁ</p><h2 id="contact-title">Vamos conversar?</h2><p id="contact-description">Este é um modelo de apresentação da Aurévyra, uma marca fictícia. O canal de atendimento ainda não foi configurado.</p><p>Ao personalizar o projeto com um número de WhatsApp, os botões passam a abrir uma conversa. Nenhuma mensagem ou reserva foi enviada.</p><button type="button" className="button button-primary" onClick={() => dialog.current?.close()}>Continuar explorando</button></dialog>;
+}

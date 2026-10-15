@@ -1,0 +1,117 @@
+.about-editorial {
+  position: relative;
+  background: #eceee5;
+  padding: 100px 0 94px;
+  border-top: 1px solid #dce0d2;
+}
+.about-editorial-grid {
+  display: grid;
+  grid-template-columns: .94fr 1.06fr;
+  gap: clamp(55px, 7vw, 100px);
+  align-items: center;
+}
+.about-visual { position: relative; max-width: 470px; padding-right: 28px; }
+.about-photo-frame {
+  position: relative;
+  height: 515px;
+  overflow: hidden;
+  border-radius: 220px 220px 8px 8px;
+  background: #d6c5ae;
+  border: 1px solid #d0c8b8;
+}
+.about-photo-frame img { height: 100%; object-position: center 52%; filter: saturate(.8); }
+.about-photo-frame::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 65%, #33372f5c);
+  pointer-events: none;
+}
+.about-photo-label {
+  position: absolute; left: 27px; bottom: 27px; z-index: 1;
+  color: #fff; font-size: 9px; letter-spacing: 2.2px;
+}
+.about-signature-card {
+  position: absolute; right: 0; bottom: 57px; z-index: 2;
+  display: flex; align-items: center; gap: 19px;
+  padding: 23px 28px; min-width: 221px;
+  background: #52634d; color: #f6f2eb;
+  border: 1px solid #f6f2eb47; border-radius: 5px;
+  box-shadow: 0 12px 30px #33372f12;
+}
+.about-signature-card > svg { color: #e2e6d4; }
+.about-signature {
+  font-family: Cormorant, Georgia, serif; font-style: italic;
+  font-size: 47px; line-height: .95; display: block;
+}
+.about-signature-subtitle { display: block; font-size: 7px; letter-spacing: 1.7px; margin-top: 11px; }
+.about-photo-caption {
+  margin-top: 19px; font-size: 10px; color: #59634f;
+  text-align: center; line-height: 1.7; padding-inline: 6px;
+}
+.about-editorial-copy .eyebrow { margin-bottom: 22px; }
+.about-editorial-copy h2 { font-size: clamp(48px, 4.2vw, 60px); line-height: 1.06; letter-spacing: -1.6px; }
+.about-editorial-copy > .about-intro {
+  max-width: 425px; font-size: 13px; line-height: 1.95;
+  color: #596052; margin-top: 25px;
+}
+.about-location-note {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 23px; font-size: 12px; font-weight: 600; line-height: 1.7;
+}
+.about-location-note > svg { color: #596d4f; }
+.about-location-note small { display: block; font-size: 11px; font-weight: 400; color: #596052; }
+.about-pending-note {
+  display: flex; gap: 15px; align-items: flex-start;
+  border-top: 1px solid #ccd4c1; padding-top: 22px;
+  margin-top: 27px; max-width: 440px;
+}
+.about-pending-note > svg { color: #5e7055; margin-top: 2px; }
+.about-pending-note strong { font-size: 12px; font-weight: 600; }
+.about-pending-note p { font-size: 11px; line-height: 1.8; color: #596052; margin-top: 6px; max-width: 370px; }
+.about-contact { display: flex; align-items: center; gap: 21px; margin-top: 28px; flex-wrap: wrap; }
+.about-contact .button { font-size: 12px; padding: 17px 20px; }
+.about-contact > span { font-size: 10px; line-height: 1.8; color: #596052; }
+.about-verified-detail { display: flex; gap: 13px; margin-top: 22px; color: #52634d; }
+.about-verified-detail h3 { font-family: Manrope, Arial, sans-serif; font-weight: 600; font-size: 12px; }
+.about-verified-detail p { font-size: 12px; margin-top: 6px; line-height: 1.85; color: #596052; }
+.about-photo-frame.about-photo-frame--portrait { height: auto; aspect-ratio: 477 / 672; }
+.about-photo-frame--portrait img { filter: none; object-position: center; }
+.about-visual--portrait .about-photo-caption { margin-top: 56px; }
+.about-visual--portrait .about-signature-card { bottom: 34px; }
+@media (max-width: 1000px) {
+  .about-editorial-grid { gap: 46px; }
+  .about-photo-frame { height: 490px; }
+  .about-signature-card { min-width: 190px; padding: 21px; gap: 15px; }
+  .about-signature { font-size: 42px; }
+  .about-editorial-copy h2 { font-size: 48px; }
+  .about-contact { gap: 14px; }
+}
+@media (max-width: 750px) {
+  .about-editorial { padding: 65px 0; }
+  .about-editorial-grid { grid-template-columns: 1fr; gap: 38px; }
+  .about-visual { width: min(440px, 100%); margin-inline: auto; padding-right: 23px; }
+  .about-photo-frame { height: 400px; }
+  .about-signature-card { bottom: 50px; }
+  .about-editorial-copy { max-width: 520px; margin-inline: auto; width: 100%; }
+  .about-editorial-copy > .about-intro { max-width: none; }
+}
+@media (max-width: 450px) {
+  .about-editorial { padding: 52px 0 58px; }
+  .about-editorial-grid { gap: 32px; }
+  .about-visual { padding-right: 16px; }
+  .about-photo-frame { height: 345px; border-radius: 165px 165px 7px 7px; }
+  .about-photo-label { left: 18px; bottom: 23px; font-size: 7px; letter-spacing: 1.3px; }
+  .about-signature-card { padding: 17px 19px; gap: 13px; min-width: 174px; bottom: 54px; }
+  .about-signature { font-size: 39px; }
+  .about-signature-subtitle { font-size: 6px; letter-spacing: 1.3px; margin-top: 9px; }
+  .about-photo-caption { font-size: 9px; margin-top: 16px; }
+  .about-editorial-copy h2 { font-size: 43px; letter-spacing: -1.2px; }
+  .about-editorial-copy > .about-intro { font-size: 12px; margin-top: 22px; }
+  .about-location-note { font-size: 11px; margin-top: 20px; }
+  .about-location-note small { font-size: 10px; }
+  .about-pending-note { margin-top: 23px; padding-top: 20px; gap: 12px; }
+  .about-pending-note p { font-size: 10px; }
+  .about-contact { display: block; margin-top: 24px; }
+  .about-contact .button { width: 100%; font-size: 11px; padding: 17px 15px; }
+  .about-contact > span { display: block; margin-top: 14px; font-size: 10px; }
+  .about-contact > span br { display: none; }
+}

@@ -1,0 +1,82 @@
+/* Enhancement progressivo: sem JavaScript, todo o conteúdo fica visível. */
+[data-motion] {
+  --motion-delay: 0ms;
+  transition: opacity 720ms cubic-bezier(.2,.65,.25,1) var(--motion-delay),
+    transform 720ms cubic-bezier(.2,.65,.25,1) var(--motion-delay);
+}
+[data-motion-order="1"] { --motion-delay: 100ms; }
+[data-motion-order="2"] { --motion-delay: 200ms; }
+html[data-motion-ready] .motion-pending {
+  opacity: 0;
+  transform: translateY(26px);
+}
+html[data-motion-ready] .motion-pending[data-motion="photo"] {
+  transform: translateY(24px) scale(.985);
+}
+.motion-visible { opacity: 1; transform: none; }
+.motion-pending, .motion-immediate { transition: none !important; }
+
+/* A primeira dobra permanece visível, incluindo o título e o CTA. */
+html[data-motion-ready] .hero-copy > .eyebrow { animation: hero-settle 700ms both; }
+html[data-motion-ready] .hero h1 { animation: hero-settle 850ms 50ms both; }
+html[data-motion-ready] .hero-description { animation: hero-settle 850ms 110ms both; }
+html[data-motion-ready] .hero-actions { animation: hero-settle 850ms 160ms both; }
+html[data-motion-ready] .hero-address { animation: hero-settle 850ms 200ms both; }
+html[data-motion-ready] .hero-image { animation: image-settle 1100ms cubic-bezier(.2,.65,.25,1) both; }
+html[data-motion-ready] .hero-seal { animation: seal-settle 1000ms 140ms cubic-bezier(.2,.65,.25,1) both; }
+@keyframes hero-settle { from { transform: translateY(14px); } to { transform: translateY(0); } }
+@keyframes image-settle { from { transform: scale(1.035); } to { transform: scale(1); } }
+@keyframes seal-settle { from { transform: translateY(12px) rotate(-15deg); } to { transform: translateY(0) rotate(-8deg); } }
+
+.button svg, .header-cta > svg, .service-link > svg, .text-link > svg {
+  transition: transform 250ms ease;
+}
+.button:active, .header-cta:active, .floating-whatsapp:active { transform: scale(.97); }
+.desktop-nav a { position: relative; }
+.desktop-nav a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -7px;
+  height: 1px; background: #718169; transform: scaleX(0); transform-origin: left;
+  transition: transform 250ms ease;
+}
+.menu-toggle > svg { animation: icon-appear 180ms ease; }
+.mobile-nav:not([hidden]) { animation: menu-appear 220ms ease-out both; }
+.mobile-nav:not([hidden]) > a { animation: menu-item-appear 280ms ease-out both; }
+.mobile-nav > a:nth-child(2) { animation-delay: 25ms; }
+.mobile-nav > a:nth-child(3) { animation-delay: 50ms; }
+.mobile-nav > a:nth-child(4) { animation-delay: 75ms; }
+.mobile-nav > a:nth-child(5) { animation-delay: 100ms; }
+.faq-list details[open] > p { animation: answer-appear 260ms ease-out; }
+.privacy-dialog[open] { animation: dialog-appear 250ms cubic-bezier(.2,.65,.25,1); }
+.privacy-dialog[open]::backdrop { animation: backdrop-appear 200ms ease-out; }
+@keyframes menu-appear { from { opacity: .6; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@keyframes menu-item-appear { from { opacity: .4; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
+@keyframes answer-appear { from { opacity: .4; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@keyframes dialog-appear { from { opacity: .5; transform: translateY(10px) scale(.99); } to { opacity: 1; transform: none; } }
+@keyframes backdrop-appear { from { opacity: 0; } to { opacity: 1; } }
+@keyframes icon-appear { from { transform: rotate(-12deg) scale(.9); } to { transform: none; } }
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card { transition: opacity 720ms ease var(--motion-delay), transform 550ms cubic-bezier(.2,.65,.25,1) var(--motion-delay), box-shadow 300ms ease; }
+  .service-card.motion-visible:hover { transform: translateY(-5px); box-shadow: 0 14px 32px #33372f0d; transition-delay: 0ms; }
+  .button:hover > svg:last-child, .header-cta:hover > svg:last-child, .service-link:hover > svg:last-child { transform: translate(2px,-2px); }
+  .text-link:hover > svg { transform: translateY(2px); }
+  .desktop-nav a:hover::after, .desktop-nav a:focus-visible::after { transform: scaleX(1); }
+}
+@media (max-width: 600px) {
+  [data-motion] { transition-duration: 480ms; }
+  [data-motion-order="1"] { --motion-delay: 35ms; }
+  [data-motion-order="2"] { --motion-delay: 70ms; }
+  html[data-motion-ready] .motion-pending { transform: translateY(14px); }
+  html[data-motion-ready] .motion-pending[data-motion="photo"] { transform: translateY(14px); }
+  html[data-motion-ready] .hero h1, html[data-motion-ready] .hero-copy > .eyebrow,
+  html[data-motion-ready] .hero-description, html[data-motion-ready] .hero-actions,
+  html[data-motion-ready] .hero-address { animation-duration: 550ms; animation-delay: 0ms; }
+  html[data-motion-ready] .hero-image { animation-duration: 750ms; }
+  html[data-motion-ready] .hero-seal { animation-duration: 650ms; animation-delay: 0ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-motion], html[data-motion-ready] .motion-pending,
+  html[data-motion-ready] .motion-pending[data-motion="photo"] { opacity: 1 !important; transform: none !important; }
+  html { scroll-behavior: auto !important; }
+}

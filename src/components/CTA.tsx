@@ -1,0 +1,2 @@
+import { ScheduleButton } from './UI';
+export default function CTA() { return <section className="final-cta" aria-labelledby="cta-title"><div className="container" data-motion="rise"><img src="/brand/simbolo.svg" className="brand-symbol" width="46" height="38" alt="" aria-hidden="true" /><p className="eyebrow">RESERVE UM TEMPO PARA VOCÊ</p><h2 id="cta-title">Seu momento de<br /><em>autocuidado começa aqui.</em></h2><p>Uma mensagem pode ser o primeiro passo.</p><ScheduleButton label="Conversar pelo WhatsApp" source="cta-final" /></div></section>; }

@@ -1,0 +1,48 @@
+# Dependências e build local
+node_modules/
+dist/
+.prerender/
+coverage/
+*.tsbuildinfo
+*.log
+
+# Somente o exemplo vazio pode ser versionado
+.env*
+!.env.example
+.npmrc
+.netrc
+.pypirc
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+service-account*.json
+secrets.*
+
+# Identidade de hospedagem, ferramentas e caches locais
+.openai/
+.sites-runtime/
+.sites-cache/
+.codex/
+.agents/
+.vercel/
+.netlify/
+.wrangler/
+.aws/
+.ssh/
+.azure/
+.gcloud/
+.kube/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Relatórios, capturas e pacotes de entrega
+*-qa.json
+accessibility-axe.json
+lighthouse-*
+preview-*.png
+*.zip
+*.tar.gz
